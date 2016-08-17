@@ -154,7 +154,7 @@ line con 0
 line aux 0
 line vty 0 4
  privilege level 15
- no login
+ login local
  transport preferred none
  transport input telnet
 !
