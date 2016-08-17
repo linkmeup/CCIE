@@ -59,6 +59,7 @@ multilink bundle-name authenticated
 !
 !
 !
+username cisco password 0 cisco
 !
 redundancy
 !
