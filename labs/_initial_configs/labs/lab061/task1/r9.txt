@@ -107,7 +107,7 @@ interface Ethernet0/1.89
 !
 interface Ethernet0/1.109
  encapsulation dot1Q 109
- ip address 188.1.109.9 255.255.255.0
+ no ip address 
  ipv6 address 2001:CC1E:1:109::9/64
  shutdown
 !
@@ -120,7 +120,6 @@ interface Ethernet0/3
  shutdown
 !
 interface Serial1/0
- mtu 64
  no ip address
  encapsulation ppp
  ppp multilink
@@ -129,7 +128,6 @@ interface Serial1/0
  no shutdown
 !
 interface Serial1/1
- mtu 64
  no ip address
  encapsulation ppp
  ppp multilink

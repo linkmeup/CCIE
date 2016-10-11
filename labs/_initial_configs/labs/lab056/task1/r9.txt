@@ -1,13 +1,13 @@
 
 !
-! Last configuration change at 21:54:02 CET Sun Mar 27 2016
+! Last configuration change at 22:20:04 CET Sun Mar 27 2016
 !
 version 15.5
 service timestamps debug datetime msec
 service timestamps log datetime msec
 no service password-encryption
 !
-hostname R1
+hostname R9
 !
 boot-start-marker
 boot-end-marker
@@ -78,21 +78,37 @@ ip tcp synwait-time 5
 !
 !
 interface Loopback0
- ip address 180.1.1.1 255.255.255.255
- ipv6 address 2001:C0FF:EE:1::1:1/128
+ ip address 180.1.9.9 255.255.255.255
+ ipv6 address 2001:C0FF:EE:1::9:9/128
+!
+interface Multilink1
+ ip address 188.1.109.9 255.255.255.0
+ ppp multilink
+ ppp multilink group 1
+ no shutdown
 !
 interface Ethernet0/0
  no ip address
  shutdown
 !
 interface Ethernet0/1
- no ip address
  no shutdown
 !
-interface Ethernet0/1.12
- encapsulation dot1Q 12
- ip address 188.1.12.1 255.255.255.0
- ipv6 address 2001:CC1E:1:12::1/64
+interface Ethernet0/1.9
+ encapsulation dot1Q 9
+ ip address 188.1.9.9 255.255.255.0
+ ipv6 address 2001:CC1E:1:9::9/64
+!
+interface Ethernet0/1.89
+ encapsulation dot1Q 89
+ ip address 188.1.89.9 255.255.255.0
+ ipv6 address 2001:CC1E:1:89::9/64
+!
+interface Ethernet0/1.109
+ encapsulation dot1Q 109
+ ip address 188.1.109.9 255.255.255.0
+ ipv6 address 2001:CC1E:1:109::9/64
+ shutdown
 !
 interface Ethernet0/2
  no ip address
@@ -103,15 +119,20 @@ interface Ethernet0/3
  shutdown
 !
 interface Serial1/0
- ip address 188.1.12.1 255.255.255.0
+ no ip address
  encapsulation ppp
- shutdown
+ ppp multilink
+ ppp multilink group 1
  serial restart-delay 0
+ no shutdown
 !
 interface Serial1/1
  no ip address
- shutdown
+ encapsulation ppp
+ ppp multilink
+ ppp multilink group 1
  serial restart-delay 0
+ no shutdown
 !
 interface Serial1/2
  no ip address
@@ -137,7 +158,7 @@ control-plane
 banner motd ^C
 ***********************************
 ***********************************
-********** LAB 61 TASK 1 **********
+********** LAB 50 TASK 1 **********
 ***********************************
 ***********************************
 ^C
